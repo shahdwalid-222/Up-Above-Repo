@@ -7,9 +7,8 @@ public class CarlControl : MonoBehaviour
 
     private Animator anim;
     private bool isRolling = false;
-    private bool isDamaged = false;
 
-    public KeyCode R,L,sb;
+    public KeyCode R,L,sb,roll;
     public float speed ,height;
     public Transform groundcheck;
     public float Groundcheckradius;
@@ -19,7 +18,7 @@ public class CarlControl : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-    }
+    }   
 
     // Update is called once per frame
     void Update()
@@ -27,14 +26,18 @@ public class CarlControl : MonoBehaviour
         if(Input.GetKeyDown(sb) && grounded){
             GetComponent<Rigidbody2D>().velocity = new Vector2( GetComponent<Rigidbody2D>().velocity.x,height);
         }
+
+
         if(Input.GetKey(L)){
             GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, GetComponent<Rigidbody2D>().velocity.y);
+            
             if(GetComponent<SpriteRenderer>() != null)
         {
-    GetComponent<SpriteRenderer>().flipX = false;
+             GetComponent<SpriteRenderer>().flipX = false;
         }    
-       
         }
+
+
         if(Input.GetKey(R)){
             GetComponent<Rigidbody2D>().velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
         if(GetComponent<SpriteRenderer>() != null)
@@ -44,12 +47,13 @@ public class CarlControl : MonoBehaviour
         }
 
 
-         if (Input.GetKeyDown()
-            && !isRolling && !isDamaged)
+         if (Input.GetKeyDown(roll) && !isRolling && !anim.GetBool("isDamage"))
         {
             isRolling = true;
-            animator.SetTrigger("Roll");
+            anim.SetTrigger("Roll");
         }
+
+
 
             anim.SetFloat("Height", GetComponent<Rigidbody2D>().velocity.y);
             anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
@@ -58,5 +62,26 @@ public class CarlControl : MonoBehaviour
 
     void FixedUpdate(){
           grounded = Physics2D.OverlapCircle(groundcheck.position, Groundcheckradius, WhatIsGround ); 
+    }
+
+
+
+     public void TakeDamage()
+    {
+        if (anim.GetBool("isDamage") || isRolling)
+            return;
+
+        anim.SetBool("isDamage",true);  
+        
+    }
+
+     public void EndRoll()
+    {
+        isRolling = false;
+    }
+
+    public void EndDamage()
+    {
+        anim.SetBool("isDamage" , false);
     }
 }
