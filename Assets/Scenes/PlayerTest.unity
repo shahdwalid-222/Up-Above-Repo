@@ -328,6 +328,9 @@ MonoBehaviour:
   L: 276
   sb: 32
   roll: 114
+  H: 104
+  T: 116
+  C: 306
   speed: 7
   height: 12
   groundcheck: {fileID: 660178195}
@@ -373,7 +376,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.04, y: 1.48}
+    oldSize: {x: 1.18, y: 1.33}
     newSize: {x: 1.04, y: 1.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -423,7 +426,7 @@ SpriteRenderer:
   m_SortingLayerID: -1642885305
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -853699591, guid: bd21ad993d87366408445ba2d0f7fc65, type: 3}
+  m_Sprite: {fileID: 1220467637, guid: bd21ad993d87366408445ba2d0f7fc65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -442,7 +445,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633406359}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.45, y: 1.96, z: 0}
+  m_LocalPosition: {x: 0.54, y: 1.2, z: 0}
   m_LocalScale: {x: 2.4597685, y: 2.286036, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
