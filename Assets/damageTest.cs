@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class damageTest : MonoBehaviour
 {
+        public AudioClip Damagesound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +20,9 @@ public class damageTest : MonoBehaviour
 
      void OnTriggerEnter2D(Collider2D other)
     {
+         AudioScript.Instance.PlayMusicSFX(Damagesound);
         if(other.tag == "Player"){
-            FindObjectOfType<CarlControl>().TakeDamage();
-        }
+            FindObjectOfType<PlayerStats>().TakeDamage(1);
+    }
     }
 }
